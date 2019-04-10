@@ -7,6 +7,6 @@ public class ButtonScript : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("scene_main");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

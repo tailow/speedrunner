@@ -47,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.transform.localEulerAngles = new Vector3(-xRot, playerCamera.transform.localEulerAngles.y, playerCamera.transform.localEulerAngles.z);
         transform.Rotate(new Vector3(0, Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime * 100, 0));
 
+        // SPEED CAP
+        if (speed > maxSpeed)
+        {
+            speed = maxSpeed;
+        }
+
         // MOVEMENT
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
@@ -85,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        movement = dir.normalized * speed;
+        movement = dir.normalized * speed / 20;
 
         // JUMPING
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -94,10 +100,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // SPEED TEXT
-        speedText.text = ((int)(speed * 20)).ToString();
+        speedText.text = ((int)(speed)).ToString();
 
         // CAMERA FOV
-        playerCamera.fieldOfView = Mathf.Clamp(110 + speed * 0.1f * fovMultiplier, 110, 150);
+        playerCamera.fieldOfView = Mathf.Clamp(110 + speed / 200f * fovMultiplier, 110, 145);
 
         // CROUCHING
         if (Input.GetButton("Crouch"))
@@ -119,10 +125,10 @@ public class PlayerMovement : MonoBehaviour
     bool IsGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0.5f, 0, 0), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.5f, 0, 0), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0, 0, 0.5f), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0, 0, -0.5f), Vector3.down, 1.001f))
+            Physics.Raycast(transform.position + new Vector3(0.45f, 0, 0), Vector3.down, 1.001f) ||
+            Physics.Raycast(transform.position + new Vector3(-0.45f, 0, 0), Vector3.down, 1.001f) ||
+            Physics.Raycast(transform.position + new Vector3(0, 0, 0.45f), Vector3.down, 1.001f) ||
+            Physics.Raycast(transform.position + new Vector3(0, 0, -0.45f), Vector3.down, 1.001f))
         {
             return true;
         }
