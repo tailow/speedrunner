@@ -20,7 +20,7 @@ public class GameManagement : MonoBehaviour
     
     void Update()
     {
-        string timePassed = string.Format("{0:D1}:{1:D2}.{2:D3}", stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds, stopwatch.Elapsed.Milliseconds);
+        string timePassed = string.Format("{0:D2}:{1:D2}.{2:D3}", stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds, stopwatch.Elapsed.Milliseconds);
 
         stopwatchText.text = timePassed;
     }
