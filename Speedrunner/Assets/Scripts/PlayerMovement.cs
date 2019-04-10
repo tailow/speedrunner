@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed;
     public float crouchSpeed;
     public float acceleration;
-    public float sensitivity;
     public float jumpHeight;
     public float maxSpeed;
     public float strafeAcceleration;
     public float fovMultiplier;
 
+    public GameManagement gameManager;
+
+    float sensitivity;
     float speed;
     float xRot;
     float t;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
 
         rigid = gameObject.GetComponent<Rigidbody>();
+
+        sensitivity = PlayerPrefs.GetFloat("sensitivity");
     }
 
     void Update()
@@ -56,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         // MOVEMENT
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
+            gameManager.stopwatch.Start();
+
             t = 0f;
 
             speed += Mathf.Abs(Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime * strafeAcceleration);
