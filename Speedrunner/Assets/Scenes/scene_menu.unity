@@ -856,6 +856,10 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   sensitivityAmount: {fileID: 0}
   sensitivitySlider: {fileID: 0}
+  gameManager: {fileID: 0}
+  inGameSettingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  movementScript: {fileID: 0}
   sensitivity: 0
 --- !u!114 &670373813
 MonoBehaviour:
@@ -1003,6 +1007,10 @@ MonoBehaviour:
   settingsMenu: {fileID: 1929006936}
   sensitivityAmount: {fileID: 666651197}
   sensitivitySlider: {fileID: 1037553937}
+  gameManager: {fileID: 0}
+  inGameSettingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  movementScript: {fileID: 0}
   sensitivity: 0
 --- !u!114 &717095851
 MonoBehaviour:
@@ -1340,6 +1348,10 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   sensitivityAmount: {fileID: 0}
   sensitivitySlider: {fileID: 0}
+  gameManager: {fileID: 0}
+  inGameSettingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  movementScript: {fileID: 0}
   sensitivity: 0
 --- !u!1 &1037553937
 GameObject:
@@ -1421,9 +1433,9 @@ MonoBehaviour:
   m_FillRect: {fileID: 619226380}
   m_HandleRect: {fileID: 271178087}
   m_Direction: 0
-  m_MinValue: 0.01
-  m_MaxValue: 20
-  m_WholeNumbers: 0
+  m_MinValue: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
   m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1457,6 +1469,10 @@ MonoBehaviour:
   settingsMenu: {fileID: 0}
   sensitivityAmount: {fileID: 666651197}
   sensitivitySlider: {fileID: 0}
+  gameManager: {fileID: 0}
+  inGameSettingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  movementScript: {fileID: 0}
   sensitivity: 0
 --- !u!1 &1070331555
 GameObject:
@@ -1712,6 +1728,10 @@ MonoBehaviour:
   settingsMenu: {fileID: 1929006936}
   sensitivityAmount: {fileID: 0}
   sensitivitySlider: {fileID: 1037553937}
+  gameManager: {fileID: 0}
+  inGameSettingsMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  movementScript: {fileID: 0}
   sensitivity: 0
 --- !u!114 &1146486647
 MonoBehaviour:

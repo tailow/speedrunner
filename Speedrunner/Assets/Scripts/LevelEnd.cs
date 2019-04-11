@@ -15,6 +15,8 @@ public class LevelEnd : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
+            Time.timeScale = 0;
+
             endScreen.SetActive(true);
             gameManager.levelFinished = true;
             endTime.text = gameManager.timePassed;

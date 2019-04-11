@@ -15,9 +15,15 @@ public class GameManagement : MonoBehaviour
 
     public bool levelFinished;
 
+    public GameObject pauseMenu;
+    public GameObject inGameSettingsMenu;
+
     void Start()
     {
         stopwatch = new Stopwatch();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -28,6 +34,8 @@ public class GameManagement : MonoBehaviour
 
         if (Input.GetButtonDown("Restart"))
         {
+            Time.timeScale = 1;
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -35,8 +43,48 @@ public class GameManagement : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                Time.timeScale = 1;
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+        }
+
+        if (Input.GetButtonDown("Exit"))
+        {
+            TogglePauseMenu();
+        }
+    }
+
+    public void TogglePauseMenu()
+    {
+        if (inGameSettingsMenu.activeInHierarchy)
+        {
+            inGameSettingsMenu.SetActive(false);
+
+            stopwatch.Start();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+        }
+
+        else if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+
+            stopwatch.Start();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+        }
+
+        else
+        {
+            pauseMenu.SetActive(true);
+
+            stopwatch.Stop();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
         }
     }
 }

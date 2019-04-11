@@ -12,10 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed;
     public float strafeAcceleration;
     public float fovMultiplier;
+    public float sensitivity;
+    public float jumpDelay;
+
+    public bool isGrounded;
 
     public GameManagement gameManager;
 
-    float sensitivity;
+    public AudioSource jumpSound;
+
+    float lastJump;
     float speed;
     float xRot;
     float t;
@@ -33,12 +39,17 @@ public class PlayerMovement : MonoBehaviour
     {
         playerCamera = Camera.main;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         rigid = gameObject.GetComponent<Rigidbody>();
 
-        sensitivity = PlayerPrefs.GetFloat("sensitivity");
+        if (PlayerPrefs.GetInt("sensitivity") == 0)
+        {
+            sensitivity = 10;
+        }
+
+        else
+        {
+            sensitivity = PlayerPrefs.GetInt("sensitivity");
+        }
     }
 
     void Update()
@@ -66,13 +77,13 @@ public class PlayerMovement : MonoBehaviour
 
             speed += Mathf.Abs(Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime * strafeAcceleration);
 
-            if ((speed < movementSpeed || IsGrounded()) && !Input.GetButton("Crouch"))
+            if ((speed < movementSpeed || isGrounded) && !Input.GetButton("Crouch"))
             {
                 speed = Mathf.Lerp(speed, movementSpeed, t += Time.deltaTime * acceleration);
             }
 
             // CROUCHING
-            else if ((speed < movementSpeed || IsGrounded()) && Input.GetButton("Crouch"))
+            else if ((speed < movementSpeed || isGrounded) && Input.GetButton("Crouch"))
             {
                 speed = Mathf.Lerp(speed, crouchSpeed, t += Time.deltaTime * acceleration);
             }
@@ -100,9 +111,16 @@ public class PlayerMovement : MonoBehaviour
         movement = dir.normalized * speed / 20;
 
         // JUMPING
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && (Time.time - lastJump > jumpDelay))
         {
-            rigid.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            if (isGrounded)
+            {
+                rigid.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+
+                jumpSound.Play();
+            }
+
+            lastJump = Time.time;
         }
 
         // SPEED TEXT
@@ -126,22 +144,5 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rigid.MovePosition(rigid.position + transform.TransformDirection(movement) * Time.deltaTime);
-    }
-
-    bool IsGrounded()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0.45f, 0, 0), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(-0.45f, 0, 0), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0, 0, 0.45f), Vector3.down, 1.001f) ||
-            Physics.Raycast(transform.position + new Vector3(0, 0, -0.45f), Vector3.down, 1.001f))
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
     }
 }

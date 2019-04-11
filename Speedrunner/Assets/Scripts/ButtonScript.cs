@@ -11,6 +11,10 @@ public class ButtonScript : MonoBehaviour
     public GameObject settingsMenu;
     public TMP_Text sensitivityAmount;
     public GameObject sensitivitySlider;
+    public GameManagement gameManager;
+    public GameObject inGameSettingsMenu;
+    public GameObject pauseMenu;
+    public PlayerMovement movementScript;
 
     public float sensitivity;
 
@@ -21,15 +25,24 @@ public class ButtonScript : MonoBehaviour
 
     public void Settings()
     {
-        if (PlayerPrefs.GetFloat("sensitivity") != 0)
+        if (PlayerPrefs.GetInt("sensitivity") != 0)
         {
-            sensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("sensitivity");
+            sensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetInt("sensitivity");
 
-            sensitivityAmount.text = PlayerPrefs.GetFloat("sensitivity").ToString();
+            sensitivityAmount.text = PlayerPrefs.GetInt("sensitivity").ToString();
         }
 
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            mainMenu.SetActive(false);
+            settingsMenu.SetActive(true);
+        }
+
+        else
+        {
+            inGameSettingsMenu.SetActive(true);
+            pauseMenu.SetActive(false);
+        }
     }
 
     public void Exit()
@@ -39,21 +52,44 @@ public class ButtonScript : MonoBehaviour
 
     public void Menu()
     {
+        Time.timeScale = 1;
+
         SceneManager.LoadScene("scene_menu");
     }
 
     public void Accept()
     {
-        PlayerPrefs.SetFloat("sensitivity", sensitivitySlider.GetComponent<ButtonScript>().sensitivity);
+        PlayerPrefs.SetInt("sensitivity", (int)sensitivitySlider.GetComponent<ButtonScript>().sensitivity);
 
-        mainMenu.SetActive(true);
-        settingsMenu.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            mainMenu.SetActive(true);
+            settingsMenu.SetActive(false);
+        }
+
+        else
+        {
+            inGameSettingsMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+
+            movementScript.sensitivity = PlayerPrefs.GetInt("sensitivity");
+        }
     }
 
     public void SetSensitivity()
     {
-        sensitivity = Mathf.Round(gameObject.GetComponent<Slider>().value * 100f) / 100f;
+        sensitivity = gameObject.GetComponent<Slider>().value;
 
         sensitivityAmount.text = sensitivity.ToString();
+    }
+
+    public void Resume()
+    {
+        gameManager.TogglePauseMenu();
+    }
+
+    public void InGameSettings()
+    {
+        inGameSettingsMenu.SetActive(true);
     }
 }
