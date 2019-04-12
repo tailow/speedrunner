@@ -4794,6 +4794,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 5352492183796554752, guid: 7fda903824c3066419b4d90d2a11f86c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     - target: {fileID: 5352492183796554755, guid: 7fda903824c3066419b4d90d2a11f86c,
         type: 3}
       propertyPath: gameManager
@@ -4809,6 +4814,21 @@ PrefabInstance:
       propertyPath: endTime
       value: 
       objectReference: {fileID: 965523318}
+    - target: {fileID: 5352492183796554754, guid: 7fda903824c3066419b4d90d2a11f86c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352492183796554754, guid: 7fda903824c3066419b4d90d2a11f86c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352492183796554754, guid: 7fda903824c3066419b4d90d2a11f86c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fda903824c3066419b4d90d2a11f86c, type: 3}
 --- !u!1001 &8507516722680630042
@@ -4823,6 +4843,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1278514726}
+    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
+        type: 3}
+      propertyPath: speedText
+      value: 
+      objectReference: {fileID: 931691619}
     - target: {fileID: 8507516722173268485, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4878,16 +4908,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1278514726}
-    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
-        type: 3}
-      propertyPath: speedText
-      value: 
-      objectReference: {fileID: 931691619}
     - target: {fileID: 8507516722925459333, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
       propertyPath: m_LocalScale.x
