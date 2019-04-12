@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandingSound : MonoBehaviour
+public class LandingScript : MonoBehaviour
 {
     public AudioSource landingSound;
     public PlayerMovement playerMovement;

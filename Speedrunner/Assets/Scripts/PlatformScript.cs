@@ -4,16 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class LevelEnd : MonoBehaviour
+public class PlatformScript : MonoBehaviour
 {
     public GameManagement gameManager;
     public GameObject endScreen;
 
     public TMP_Text endTime;
 
+    void Start()
+    {
+        transform.localScale = new Vector3(1, 0.01f, 1);
+        transform.localPosition = new Vector3(0, Mathf.Abs(transform.parent.localScale.y / 2), 0);
+    }
+
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.tag == "Player")
+        if (coll.tag == "Player" && gameObject.tag == "Finish")
         {
             Time.timeScale = 0;
 
