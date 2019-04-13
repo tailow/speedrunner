@@ -27,7 +27,15 @@ public class PlatformScript : MonoBehaviour
             gameManager.levelFinished = true;
             endTime.text = gameManager.timePassed;
 
-            PlayerPrefs.SetInt("level" + SceneManager.GetActiveScene().buildIndex + 1, 1);
+            PlayerPrefs.SetInt("level" + SceneManager.GetActiveScene().buildIndex, 1);
+
+            if (gameManager.timePassedTicks < PlayerPrefs.GetInt("levelBest" + SceneManager.GetActiveScene().buildIndex)
+                || PlayerPrefs.GetInt("levelBest" + SceneManager.GetActiveScene().buildIndex) == 0)
+            {
+                PlayerPrefs.SetInt("levelBest" + SceneManager.GetActiveScene().buildIndex, (int)gameManager.timePassedTicks);
+              
+                PlayerPrefs.SetString("levelBest" + SceneManager.GetActiveScene().buildIndex, gameManager.timePassed);
+            }
         }
     }
 }

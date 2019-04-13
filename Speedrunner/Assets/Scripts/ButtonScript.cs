@@ -22,12 +22,14 @@ public class ButtonScript : MonoBehaviour
 
     void Start()
     {
-        if (transform.parent.name == "ButtonGrid" && transform.GetSiblingIndex() != 0)
+        if (transform.parent.name == "ButtonGrid")
         {
-            if (PlayerPrefs.GetInt("level" + transform.GetSiblingIndex() + 1) == 0)
+            if (PlayerPrefs.GetInt("level" + (transform.GetSiblingIndex() + 1)) == 0 && transform.GetSiblingIndex() != 0)
             {
                 gameObject.GetComponent<Button>().interactable = false;
             }
+
+            transform.GetChild(1).GetComponent<Text>().text = PlayerPrefs.GetString("levelBest" + (transform.GetSiblingIndex() + 1));
         }
     }
 

@@ -12,6 +12,7 @@ public class GameManagement : MonoBehaviour
     public TMP_Text stopwatchText;
 
     public string timePassed;
+    public long timePassedTicks;
 
     public bool levelFinished;
 
@@ -29,6 +30,7 @@ public class GameManagement : MonoBehaviour
     void Update()
     {
         timePassed = string.Format("{0:D2}:{1:D2}.{2:D3}", stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds, stopwatch.Elapsed.Milliseconds);
+        timePassedTicks = stopwatch.ElapsedTicks;
 
         stopwatchText.text = timePassed;
 
