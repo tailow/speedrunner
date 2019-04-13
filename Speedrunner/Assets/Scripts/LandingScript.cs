@@ -9,16 +9,19 @@ public class LandingScript : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
-        playerMovement.isGrounded = true;
-
         if (Time.timeSinceLevelLoad > 0.3f && coll.gameObject.CompareTag("Platform"))
         {
+            playerMovement.isGrounded = true;
+
             landingSound.Play();
         }
     }
 
     void OnTriggerExit(Collider coll)
     {
-        playerMovement.isGrounded = false;
+        if (coll.gameObject.CompareTag("Platform"))
+        {
+            playerMovement.isGrounded = false;
+        }
     }
 }

@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        isGrounded = true;
+
         playerCamera = Camera.main;
 
         rigid = gameObject.GetComponent<Rigidbody>();
@@ -115,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
+                isGrounded = false;
+
                 rigid.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
 
                 jumpSound.Play();

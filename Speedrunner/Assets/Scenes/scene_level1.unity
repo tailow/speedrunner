@@ -593,6 +593,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 1800590739}
   pauseMenu: {fileID: 1880703443}
   movementScript: {fileID: 0}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!1 &136242668
 GameObject:
@@ -1530,6 +1532,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   movementScript: {fileID: 0}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!114 &566647072 stripped
 MonoBehaviour:
@@ -1581,6 +1585,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   movementScript: {fileID: 566647072}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!114 &586985319
 MonoBehaviour:
@@ -1724,6 +1730,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 1800590739}
   pauseMenu: {fileID: 1880703443}
   movementScript: {fileID: 566647072}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!114 &619159811
 MonoBehaviour:
@@ -2122,6 +2130,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   movementScript: {fileID: 0}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!1 &841484237
 GameObject:
@@ -4302,6 +4312,8 @@ MonoBehaviour:
   inGameSettingsMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   movementScript: {fileID: 0}
+  levelMenu: {fileID: 0}
+  musicPrefab: {fileID: 0}
   sensitivity: 0
 --- !u!1001 &1958033060
 PrefabInstance:

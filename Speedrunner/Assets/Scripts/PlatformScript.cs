@@ -26,6 +26,8 @@ public class PlatformScript : MonoBehaviour
             endScreen.SetActive(true);
             gameManager.levelFinished = true;
             endTime.text = gameManager.timePassed;
+
+            PlayerPrefs.SetInt("level" + SceneManager.GetActiveScene().buildIndex + 1, 1);
         }
     }
 }
