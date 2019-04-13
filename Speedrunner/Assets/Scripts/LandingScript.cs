@@ -11,9 +11,15 @@ public class LandingScript : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad > 0.3f && coll.gameObject.CompareTag("Platform"))
         {
-            playerMovement.isGrounded = true;
-
             landingSound.Play();
+        }
+    }
+
+    void OnTriggerStay(Collider coll)
+    {
+        if (Time.timeSinceLevelLoad > 0.3f && coll.gameObject.CompareTag("Platform"))
+        {
+            playerMovement.isGrounded = true;
         }
     }
 

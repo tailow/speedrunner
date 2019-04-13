@@ -2885,6 +2885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopwatchText: {fileID: 517265227}
   timePassed: 
+  timePassedTicks: 0
   levelFinished: 0
   pauseMenu: {fileID: 1880703443}
   inGameSettingsMenu: {fileID: 1800590739}
@@ -4727,16 +4728,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1278514726}
-    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
-        type: 3}
-      propertyPath: speedText
-      value: 
-      objectReference: {fileID: 931691619}
     - target: {fileID: 8507516722173268485, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4792,25 +4783,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8507516722925459333, guid: 4a52e0385f7e8af4e87788597b827d4b,
+    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507516722925459333, guid: 4a52e0385f7e8af4e87788597b827d4b,
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1278514726}
+    - target: {fileID: 8507516722173268538, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: speedText
+      value: 
+      objectReference: {fileID: 931691619}
     - target: {fileID: 8507516722925459333, guid: 4a52e0385f7e8af4e87788597b827d4b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507516722925459333, guid: 4a52e0385f7e8af4e87788597b827d4b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a52e0385f7e8af4e87788597b827d4b, type: 3}
