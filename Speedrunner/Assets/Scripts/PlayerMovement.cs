@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         speedText.text = ((int)(speed)).ToString();
 
         // CAMERA FOV
-        playerCamera.fieldOfView = Mathf.Clamp(110 + speed / 200f * fovMultiplier, 110, 145);
+        playerCamera.fieldOfView = Mathf.Clamp(110 + speed / 200f * fovMultiplier, 115, 150);
 
         // CROUCHING
         if (Input.GetButton("Crouch"))
