@@ -119,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isGrounded = false;
 
+                rigid.velocity = Vector3.zero;
                 rigid.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
 
                 jumpSound.Play();

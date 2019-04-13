@@ -14,7 +14,7 @@ public class PlatformScript : MonoBehaviour
     void Start()
     {
         transform.localScale = new Vector3(1, 0.1f / transform.lossyScale.y, 1);
-        transform.localPosition = new Vector3(0, 0.5f, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y + transform.parent.localScale.y / 2 - 0.05f, transform.position.z);
     }
 
     void OnTriggerEnter(Collider coll)
