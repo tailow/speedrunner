@@ -118,7 +118,7 @@ MonoBehaviour:
   jumpHeight: 12
   maxSpeed: 2000
   strafeAcceleration: 20
-  fovMultiplier: 5
+  fovMultiplier: 10
   sensitivity: 0
   jumpDelay: 0.12
   isGrounded: 0
