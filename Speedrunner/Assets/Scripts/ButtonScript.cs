@@ -24,7 +24,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (transform.parent.name == "ButtonGrid")
         {
-            if (PlayerPrefs.GetInt("level" + (transform.GetSiblingIndex() + 1)) == 0 && transform.GetSiblingIndex() != 0)
+            if (PlayerPrefs.GetInt("level" + transform.GetSiblingIndex()) == 0 && transform.GetSiblingIndex() != 0)
             {
                 gameObject.GetComponent<Button>().interactable = false;
             }

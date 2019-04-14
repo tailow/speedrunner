@@ -22,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpSound;
 
     float lastJump;
-    float speed;
+
+    [HideInInspector]
+    public float speed;
+
     float xRot;
     float t;
 
