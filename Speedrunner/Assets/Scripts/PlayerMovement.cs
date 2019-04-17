@@ -22,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpSound;
 
     float lastJump;
-    float speed;
+
+    [HideInInspector]
+    public float speed;
+
     float xRot;
     float t;
 
@@ -37,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        isGrounded = true;
+
         playerCamera = Camera.main;
 
         rigid = gameObject.GetComponent<Rigidbody>();
@@ -115,6 +120,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
+                isGrounded = false;
+
+                rigid.velocity = Vector3.zero;
                 rigid.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
 
                 jumpSound.Play();
@@ -127,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         speedText.text = ((int)(speed)).ToString();
 
         // CAMERA FOV
-        playerCamera.fieldOfView = Mathf.Clamp(110 + speed / 200f * fovMultiplier, 110, 145);
+        playerCamera.fieldOfView = Mathf.Clamp(110 + speed / 200f * fovMultiplier, 115, 150);
 
         // CROUCHING
         if (Input.GetButton("Crouch"))

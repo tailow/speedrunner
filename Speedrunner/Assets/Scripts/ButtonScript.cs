@@ -15,12 +15,40 @@ public class ButtonScript : MonoBehaviour
     public GameObject inGameSettingsMenu;
     public GameObject pauseMenu;
     public PlayerMovement movementScript;
+    public GameObject levelMenu;
+    public GameObject musicPrefab;
 
     public float sensitivity;
 
+    void Start()
+    {
+        if (transform.parent.name == "ButtonGrid")
+        {
+            if (PlayerPrefs.GetInt("level" + transform.GetSiblingIndex()) == 0 && transform.GetSiblingIndex() != 0)
+            {
+                gameObject.GetComponent<Button>().interactable = false;
+            }
+
+            transform.GetChild(1).GetComponent<Text>().text = PlayerPrefs.GetString("levelBest" + (transform.GetSiblingIndex() + 1));
+        }
+    }
+
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + transform.GetSiblingIndex() + 1);
+
+        if (GameObject.Find("Music") == null)
+        {
+            var music = Instantiate(musicPrefab, Vector3.zero, Quaternion.identity);
+
+            music.name = "Music";
+        }
+    }
+
+    public void OpenLevelMenu()
+    {
+        levelMenu.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void Settings()
@@ -55,6 +83,11 @@ public class ButtonScript : MonoBehaviour
         Time.timeScale = 1;
 
         SceneManager.LoadScene("scene_menu");
+
+        if (GameObject.Find("Music") != null)
+        {
+            Destroy(GameObject.Find("Music"));
+        }
     }
 
     public void Accept()
